@@ -1,6 +1,8 @@
 import path from 'path';
 import express, { type Express, Request, Response } from 'express';
 
+import { errorHandler } from './middleware/errorHandler';
+
 const app: Express = express();
 
 app.use(express.json());
@@ -16,5 +18,7 @@ app.all('*', (req: Request, res: Response) => {
     res.type('txt').send('404 Not Found');
   }
 });
+
+app.use(errorHandler);
 
 export default app;
