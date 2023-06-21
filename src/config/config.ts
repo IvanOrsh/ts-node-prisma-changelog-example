@@ -12,8 +12,8 @@ const envSchema = z.object({
   SERVER_URL: z.string(),
 
   ACCESS_TOKEN_SECRET: z.string().min(8),
-  REFRESH_TOKEN_SECRET: z.string().default('1d'),
-  ACCESS_TOKEN_EXPIRE: z.string().min(8),
+  REFRESH_TOKEN_SECRET: z.string().min(8),
+  ACCESS_TOKEN_EXPIRE: z.string().default('1d'),
   REFRESH_TOKEN_EXPIRE: z.string().default('1d'),
 
   DB_DATABASE: z.string().default('postgres'),
@@ -27,6 +27,8 @@ const envSchema = z.object({
       'postgresql://postgres:postgres@localhost:5432/postgres?schema=public'
     ),
 });
+
+console.log(process.env['ACCESS_TOKEN_SECRET']);
 
 const validateEnv = envSchema.parse(process.env);
 
