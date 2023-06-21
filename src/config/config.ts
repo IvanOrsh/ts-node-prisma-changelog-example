@@ -28,8 +28,6 @@ const envSchema = z.object({
     ),
 });
 
-console.log(process.env['ACCESS_TOKEN_SECRET']);
-
 const validateEnv = envSchema.parse(process.env);
 
 const config = {
