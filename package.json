@@ -5,9 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "clean": "rimraf ./build",
-    "build": "npm-run-all lint format test clean && tsc",
+    "build": "tsc --project './tsconfig.build.json'",
     "start": "node build/index.js",
-    "local": "ts-node src/index.ts",
+    "local": "ts-node --project tsconfig.test.json src/index.ts",
     "local:watch": "nodemon src -e ts,json --exec 'npm run local'",
     "lint": "eslint src",
     "format": "npx prettier --write src",
