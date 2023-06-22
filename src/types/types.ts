@@ -16,3 +16,9 @@ export type TypedRequest<
   DeepPartial<ReqBody>,
   DeepPartial<QueryString>
 >;
+
+// sign up credentials: username, password
+export interface UserSignUpCredentials {
+  username: string;
+  password: string;
+}
