@@ -49,14 +49,12 @@ export const handleSignUp = async (
   try {
     const hashedPassword = await argon2.hash(password);
 
-    const newUser = await prismaClient.user.create({
+    await prismaClient.user.create({
       data: {
         username,
         password: hashedPassword,
       },
     });
-
-    logger.info(newUser);
 
     // 200
     res.status(httpStatus.CREATED).json({
