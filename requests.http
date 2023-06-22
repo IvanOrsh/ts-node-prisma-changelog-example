@@ -16,3 +16,21 @@ Content-Type: application/json
   "username": "foo",
   "password": ""
 }
+
+### login with valid credentials
+POST http://localhost:8000/api/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "Tester",
+  "password": "test123"
+}
+
+### login with invalid credentials
+POST http://localhost:8000/api/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "Tester",
+  "password": "invalid"
+}

@@ -28,7 +28,12 @@ export type ExpressMiddleware<
 ) => Promise<void> | void;
 
 // sign up credentials: username, password
+// TODO: email?
 export interface UserSignUpCredentials {
   username: string;
   password: string;
 }
+
+// login credentials: username, password
+// TODO: omit email or username
+export type UserLoginCredentials = Omit<UserSignUpCredentials, ''>;
