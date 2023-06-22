@@ -1,12 +1,12 @@
 import type { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
-import { z, ZodObject } from 'zod';
+import { z, ZodType } from 'zod';
 
 import type { RequireAtLeastOne } from '../types/types';
 
 type RequestValidationSchema = RequireAtLeastOne<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Record<'body' | 'query' | 'params', ZodObject<any, any>>
+  Record<'body' | 'query' | 'params', ZodType<any, any, any>>
 >;
 
 const validate =

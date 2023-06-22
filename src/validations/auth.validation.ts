@@ -1,13 +1,9 @@
 import { ZodType, z } from 'zod';
 import type { UserSignUpCredentials } from '../types/types';
 
-type SignUpSchemaType = ZodType<{
-  body: UserSignUpCredentials;
-}>;
-
-export const signupSchema: SignUpSchemaType = z.object({
+export const signupSchema: { body: ZodType<UserSignUpCredentials> } = {
   body: z.object({
-    username: z.string().min(2),
+    username: z.string(),
     password: z.string().min(6),
   }),
-});
+};

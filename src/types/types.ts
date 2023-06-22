@@ -1,4 +1,4 @@
-import type { Request } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import type { DeepPartial } from 'utility-types';
 
 export type RequireAtLeastOne<T> = {
@@ -16,6 +16,16 @@ export type TypedRequest<
   DeepPartial<ReqBody>,
   DeepPartial<QueryString>
 >;
+
+export type ExpressMiddleware<
+  ReqBody = Record<string, unknown>,
+  Res = Record<string, unknown>,
+  QueryString = Record<string, unknown>
+> = (
+  req: TypedRequest<ReqBody, QueryString>,
+  res: Response<Res>,
+  next: NextFunction
+) => Promise<void> | void;
 
 // sign up credentials: username, password
 export interface UserSignUpCredentials {
