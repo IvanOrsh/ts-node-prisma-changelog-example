@@ -20,7 +20,6 @@ const isAuth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const payload = jwt.verify(token, config.jwt.access_token.secret);
     req.payload = payload as JwtPayload;
-    console.log(payload);
     next();
     return;
   } catch (err) {
